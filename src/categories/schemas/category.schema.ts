@@ -5,12 +5,11 @@ export type CategoryDocument = Category & Document;
 
 @Schema()
 export class Category {
-    @Prop({ default: uuidv4 })
-    _id: string
+  @Prop({ default: uuidv4 })
+  _id: string;
 
-    @Prop({ required: true, unique: true })
-    name: string;
+  @Prop({ required: true, unique: true })
+  name: string;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
-
