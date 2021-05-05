@@ -5,6 +5,7 @@ import { CategoriesFixtures } from './categories.fixtures';
 import {
   closeInMongodConnection,
   rootMongooseTestModule,
+  toJSON,
 } from '../test-utils/MongooseTestModule';
 
 import { Model } from 'mongoose';
@@ -57,10 +58,7 @@ describe('CategoriesController', () => {
 
       expect(categories).toHaveLength(1);
       expect(categories).toContainEqual(
-        expect.objectContaining({
-          _id: category._id,
-          name: category.name,
-        }),
+        expect.objectContaining(toJSON(category)),
       );
     });
     it('should return an empty array of categories', async () => {
@@ -83,12 +81,7 @@ describe('CategoriesController', () => {
       const result = await controller.findOne(category._id);
 
       expect(result).not.toBeNull();
-      expect(result).toEqual(
-        expect.objectContaining({
-          _id: category._id,
-          name: category.name,
-        }),
-      );
+      expect(result).toEqual(expect.objectContaining(toJSON(category)));
     });
   });
   describe('update', () => {

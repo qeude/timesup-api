@@ -23,3 +23,6 @@ export const closeInMongodConnection = async (): Promise<void> => {
   await mongoose.disconnect();
   if (mongod) await mongod.stop();
 };
+
+export const toJSON = (mongooseObject: unknown): JSON =>
+  JSON.parse(JSON.stringify(mongooseObject));
