@@ -1,16 +1,16 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { CategoriesModule } from '../src/categories/categories.module';
-import { CategoriesService } from '../src/categories/categories.service';
+import { CategoriesModule } from './categories.module';
+import { CategoriesService } from './categories.service';
 import { Model } from 'mongoose';
-import { CategoryDocument } from '../src/categories/schemas/category.schema';
-import { CategoriesFixtures } from '../src/categories/categories.fixtures';
+import { CategoryDocument } from './schemas/category.schema';
+import { CategoriesFixtures } from './categories.fixtures';
 import {
   closeInMongodConnection,
   rootMongooseTestModule,
   toJSON,
-} from '../src/test-utils/MongooseTestModule';
+} from '../test-utils/MongooseTestModule';
 
 describe('Categories E2E testing', () => {
   let app: INestApplication;
